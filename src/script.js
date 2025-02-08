@@ -20,11 +20,16 @@ let formCity = document.querySelector("#searchCity");
 
 function showCurentTemperature(response) {
   console.log(response.data);
+  let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
   temperatureElement.innerHTML = temperature;
-  let city = response.data.city;
   currentCity.innerHTML = `${city}`;
+  let currentIcon = document.querySelector("#current-icon");
+  let icon = response.data.condition.icon_url;
+  if (temperature <= 0) {
+    currentIcon.innerHTML = "${icon}";
+  }
 }
 
 function searchInput(event) {
