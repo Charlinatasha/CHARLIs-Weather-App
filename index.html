@@ -16,33 +16,44 @@
   </head>
 
   <body>
-    <div id="background">
-      <div id="appContainer">
-        <header>
-          <image src="images/Charli.jpeg" id="image" />
+    <div id="appContainer">
+      <header>
+        <image src="images/Charli.jpeg" id="image" />
 
-          <a
-            href="https://www.linkedin.com/feed/"
-            target="_blank"
-            id="linkedIn"
-          >
-            Charli's
-          </a>
-          <p id="title">Weather Application</p>
-        </header>
+        <a href="https://www.linkedin.com/feed/" target="_blank" id="linkedIn">
+          Charli's
+        </a>
+        <p id="title">Weather Application</p>
+      </header>
 
-        <div id="form">
-          <form id="searchCity">
-            <input
-              type="search"
-              placeholder="Enter a city..."
-              id="searchCity-inputElement"
-            />
-            <input type="submit" value="Search" id="searchButton" />
-          </form>
-        </div>
+      <div id="form">
+        <form id="searchCity">
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            id="searchCity-inputElement"
+          />
+          <input type="submit" value="Search" id="searchButton" />
+        </form>
       </div>
+
+      <section id="sectionLeft">
+        <h1 id="current-city">Brisbane</h1>
+        <p id="current-details">
+          <span id="current-date">Thur, 16:34,</span> No chance of rain <br />
+          Humidity: <span id="highlight">68%</span>, Wind:
+          <span class="highlight">15.4km/h</span>
+        </p>
+      </section>
+      <section id="sectionRight">
+        <p>
+          <span id="current-icon">☀️</span>
+          <span id="current-temp" id="currentTemperature">14</span>
+          <span id="current-measure">°C</span>
+        </p>
+      </section>
     </div>
+
     <script src="src/script.js"></script>
   </body>
 </html>
