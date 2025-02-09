@@ -23,11 +23,10 @@ function showCurentTemperature(response) {
   let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
-  let icon = response.data.condition.icon_url;
-  let currentIcon = document.querySelector("#iconImage");
   temperatureElement.innerHTML = temperature;
   currentCity.innerHTML = `${city}`;
-  currentIcon.innerHTML = `<img src="${icon}"/>`;
+  document.getElementById("iconImage").src = response.data.condition.icon_url;
+  document.getElementById("iconImage").alt = response.data.condition.icon;
 }
 
 function searchInput(event) {
