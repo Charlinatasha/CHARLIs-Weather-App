@@ -23,19 +23,16 @@ function showCurentTemperature(response) {
   let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
+  let icon = response.data.condition.icon_url;
+  let currentIcon = document.querySelector("#iconImage");
   temperatureElement.innerHTML = temperature;
   currentCity.innerHTML = `${city}`;
-  let currentIcon = document.querySelector("#current-icon");
-  let icon = response.data.condition.icon_url;
-  if (temperature <= 0) {
-    currentIcon.innerHTML = "${icon}";
-  }
+  currentIcon.innerHTML = `<img src="${icon}"/>`;
 }
 
 function searchInput(event) {
   event.preventDefault();
   let city = searchCity.value;
-
   let apiKey = `f0c1a84ba5f0b6db3obaf7359402cfct`;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 

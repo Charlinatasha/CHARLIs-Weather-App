@@ -94,16 +94,18 @@ footer {
 }
 #sectionRight {
   position: relative;
-  left: 450px;
+  left: 380px;
   bottom: 140px;
   font-size: 48px;
 }
 #current-icon {
   position: relative;
   bottom: 5px;
-  font-size: 40px;
+  font-size: 30px;
 }
 #current-temp {
+  position: relative;
+  bottom: 20px;
   font-size: 80px;
   font-weight: bold;
 }
@@ -111,6 +113,9 @@ footer {
   position: relative;
   bottom: 40px;
   font-size: 28px;
+}
+#iconImage {
+  width: 80px;
 }
 #footer-link {
   color: palevioletred;
