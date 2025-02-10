@@ -10,6 +10,7 @@ function refreshWeather(response) {
   let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
+  let currentMeasure = document.querySelector("#current-measure");
   let descriptionElement = document.querySelector("#currentDescription");
   let description = response.data.condition.description;
   description = description.toUpperCase();
@@ -19,13 +20,13 @@ function refreshWeather(response) {
   let windspeed = response.data.wind.speed;
   let date = new Date(response.data.time * 1000);
 
-  temperatureElement.innerHTML = `${temperature}`;
   currentCity.innerHTML = `${city}`;
   dateDetails.innerHTML = formatDate(date);
   descriptionElement.innerHTML = `${description}`;
   humidityElement.innerHTML = `${humidity}%`;
   windspeedElement.innerHTML = `${windspeed} Km/h`;
-
+  temperatureElement.innerHTML = `${temperature}`;
+  currentMeasure.innerHTML = ` °C`;
   document.getElementById("iconImage").src = response.data.condition.icon_url;
   document.getElementById("iconImage").alt = response.data.condition.icon;
 }
