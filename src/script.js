@@ -1,17 +1,5 @@
-let now = new Date();
-let date = now.getDate();
-let hours = now.getHours();
-
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = "0" + minutes;
-}
-if (minutes === 0) {
-  minutes = "00";
-}
-
-let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-let day = days[now.getDay()];
+//let now = new Date();
+//let date = now.getDate();
 
 let searchCity = document.querySelector("#searchCity-inputElement");
 let currentCity = document.querySelector("#current-city");
@@ -29,9 +17,11 @@ function refreshWeather(response) {
   let humidity = response.data.temperature.humidity;
   let windspeedElement = document.querySelector("#currentWindspeed");
   let windspeed = response.data.wind.speed;
+  let date = new Date(response.data.time * 1000);
 
   temperatureElement.innerHTML = `${temperature}`;
   currentCity.innerHTML = `${city}`;
+  dateDetails.innerHTML = formatDate(date);
   descriptionElement.innerHTML = `${description}`;
   humidityElement.innerHTML = `${humidity}%`;
   windspeedElement.innerHTML = `${windspeed} Km/h`;
@@ -40,6 +30,30 @@ function refreshWeather(response) {
   document.getElementById("iconImage").alt = response.data.condition.icon;
 }
 
+function formatDate(date) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  if (minutes === 0) {
+    minutes = "00";
+  }
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  return `${day} ${hours}:${minutes},`;
+}
 function responseCity(city) {
   let apiKey = `f0c1a84ba5f0b6db3obaf7359402cfct`;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metric`;
@@ -49,7 +63,6 @@ function responseCity(city) {
 
 function handleSearchSubmit(event) {
   event.preventDefault();
-  dateDetails.innerHTML = `${day}, ${hours}:${minutes},`;
   responseCity(searchCity.value);
 }
 
