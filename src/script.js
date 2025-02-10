@@ -22,13 +22,17 @@ function refreshWeather(response) {
   let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
+  let descriptionElement = document.querySelector("#description");
+  let description = response.data.condition.description;
+
   temperatureElement.innerHTML = temperature;
   currentCity.innerHTML = `${city}`;
-  document.getElementById("iconImage").src = response.data.condition.icon_url;
-  document.getElementById("iconImage").alt = response.data.condition.icon;
-  //let conditionDescription = document.querySelector("#currentCondition");
-  //conditionDescription.innerHTML = response.data.condition.description;
+  descriptionElement.innerHTML = `${description}`;
+
+  //document.getElementById("iconImage").src = response.data.condition.icon_url;
+  //document.getElementById("iconImage").alt = response.data.condition.icon;
 }
+
 function responseCity(city) {
   let apiKey = `f0c1a84ba5f0b6db3obaf7359402cfct`;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metric`;
