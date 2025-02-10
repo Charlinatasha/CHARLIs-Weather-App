@@ -16,10 +16,9 @@ let day = days[now.getDay()];
 let searchCity = document.querySelector("#searchCity-inputElement");
 let currentCity = document.querySelector("#current-city");
 let dateDetails = document.querySelector("#current-date");
-let formCity = document.querySelector("#searchCity");
 
-function showCurentTemperature(response) {
-  console.log(response.data.condition.description);
+function refreshWeather(response) {
+  console.log(response.data);
   let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
@@ -27,17 +26,23 @@ function showCurentTemperature(response) {
   currentCity.innerHTML = `${city}`;
   document.getElementById("iconImage").src = response.data.condition.icon_url;
   document.getElementById("iconImage").alt = response.data.condition.icon;
+  //let conditionDescription = document.querySelector("#currentCondition");
+  //conditionDescription.innerHTML = response.data.condition.description;
 }
-
-function searchInput(event) {
-  event.preventDefault();
-  let city = searchCity.value;
+function responseCity(city) {
   let apiKey = `f0c1a84ba5f0b6db3obaf7359402cfct`;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metric`;
 
-  dateDetails.innerHTML = `${day}, ${hours}:${minutes},`;
-
-  axios.get(apiUrl).then(showCurentTemperature);
+  axios.get(apiUrl).then(refreshWeather);
 }
 
-formCity.addEventListener("submit", searchInput);
+function handleSearchSubmit(event) {
+  event.preventDefault();
+  dateDetails.innerHTML = `${day}, ${hours}:${minutes},`;
+  responseCity(searchCity.value);
+}
+
+let formCity = document.querySelector("#searchCity");
+formCity.addEventListener("submit", handleSearchSubmit);
+
+responseCity("Brisbane");
