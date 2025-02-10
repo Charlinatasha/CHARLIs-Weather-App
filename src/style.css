@@ -104,10 +104,12 @@ footer {
   top: 10px;
 }
 #current-city {
+  margin: 0 Auto;
   font-size: 48px;
   font-weight: bold;
 }
 #current-details {
+  margin: 0 auto;
   color: #868585;
   font-size: 20px;
 }

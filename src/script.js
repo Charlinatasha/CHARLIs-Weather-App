@@ -19,7 +19,7 @@ let dateDetails = document.querySelector("#current-date");
 let formCity = document.querySelector("#searchCity");
 
 function showCurentTemperature(response) {
-  console.log(response.data);
+  console.log(response.data.condition.description);
   let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
