@@ -22,15 +22,22 @@ function refreshWeather(response) {
   let city = response.data.city;
   let temperatureElement = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.temperature.current);
-  let descriptionElement = document.querySelector("#description");
+  let descriptionElement = document.querySelector("#currentDescription");
   let description = response.data.condition.description;
+  description = description.toUpperCase();
+  let humidityElement = document.querySelector("#currentHumidity");
+  let humidity = response.data.temperature.humidity;
+  let windspeedElement = document.querySelector("#currentWindspeed");
+  let windspeed = response.data.wind.speed;
 
-  temperatureElement.innerHTML = temperature;
+  temperatureElement.innerHTML = `${temperature}`;
   currentCity.innerHTML = `${city}`;
   descriptionElement.innerHTML = `${description}`;
+  humidityElement.innerHTML = `${humidity}%`;
+  windspeedElement.innerHTML = `${windspeed} Km/h`;
 
-  //document.getElementById("iconImage").src = response.data.condition.icon_url;
-  //document.getElementById("iconImage").alt = response.data.condition.icon;
+  document.getElementById("iconImage").src = response.data.condition.icon_url;
+  document.getElementById("iconImage").alt = response.data.condition.icon;
 }
 
 function responseCity(city) {
