@@ -149,7 +149,7 @@ footer {
   font-weight: 100;
   margin: 50px;
 }
-#forecastIcon {
+.forecastIcon {
   width: 50px;
 }
 .forecastCondition {
